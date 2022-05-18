@@ -1,7 +1,8 @@
 
 export default async function request({url, parameter}){
-  console.log(Object.keys(parameter).map(key=> `${key}=${parameter[key]}`).join('&'))
+  
   const fullUrl=`${url}?${Object.keys(parameter).map(key=> `${key}=${parameter[key]}`).join('&')}`
+  console.log(fullUrl)
 
   try{
     const res= await fetch(fullUrl)
