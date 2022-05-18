@@ -1,23 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
+import request from './components/api.js'
+
+const url= 'https://stdict.korean.go.kr/api/search.do'
+const parameter={
+  key: '3D851C07D05A4E0EA6F848288DA18A2D',
+  q: 'water'
+}
+const json= request({url, parameter})
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <span>${json}</span>
     </div>
   );
 }
