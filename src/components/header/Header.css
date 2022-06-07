@@ -1,0 +1,73 @@
+
+
+.header .nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #232d49;
+  padding: 8px 12px;
+  height: 70px;
+}
+
+.header .nav a{
+  color: white;
+  text-decoration: none;
+}
+.header .nav .nav_menu a:hover{
+  background-color: rgb(236, 137, 90);
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.header .nav .nav_logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 40px;
+}
+
+.header .nav .nav_logo img {
+  height: 40px;
+}
+
+.header .nav .nav_logo div {
+  padding: 0px 3px;
+}
+
+.header .nav .nav_menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding-left: 0;
+}
+
+.header .nav .nav_menu li {
+  padding: 8px 15px;
+}
+
+.header .nav .nav_account {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 25px;
+}
+
+.header .nav .nav_account div {
+  padding: 8px 8px;
+}
