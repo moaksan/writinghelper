@@ -1,28 +1,28 @@
 {
   "files": {
-    "main.css": "/static/css/main.2c7317cd.css",
-    "main.js": "/static/js/main.86e6ee98.js",
-    "static/js/787.28cb0dcd.chunk.js": "/static/js/787.28cb0dcd.chunk.js",
-    "static/media/NanumPenScript-Regular.ttf": "/static/media/NanumPenScript-Regular.124b3244c7b453983cb5.ttf",
-    "static/media/Poppins-Light.ttf": "/static/media/Poppins-Light.7641a0f76ca9ef6c252c.ttf",
-    "static/media/Poppins-Regular.ttf": "/static/media/Poppins-Regular.35d26b781dc5fda684cc.ttf",
-    "static/media/Poppins-Medium.ttf": "/static/media/Poppins-Medium.673ed42382ab264e0bf5.ttf",
-    "static/media/Poppins-SemiBold.ttf": "/static/media/Poppins-SemiBold.ac8d04b620e54be9b0f0.ttf",
-    "static/media/Poppins-Black.ttf": "/static/media/Poppins-Black.d8b850b920a5ef49d752.ttf",
-    "static/media/pencil.svg": "/static/media/pencil.de3705b8bf6d1cc2842623d218b706d3.svg",
-    "index.html": "/index.html",
-    "static/media/create_new_folder_FILL0_wght400_GRAD0_opsz48.svg": "/static/media/create_new_folder_FILL0_wght400_GRAD0_opsz48.eea7da6e07a61d2bc897060f08e32b58.svg",
-    "static/media/delete_FILL0_wght400_GRAD0_opsz48.svg": "/static/media/delete_FILL0_wght400_GRAD0_opsz48.9791eda45730d66280b35447023d2c3c.svg",
-    "static/media/note_add_FILL0_wght400_GRAD0_opsz48.svg": "/static/media/note_add_FILL0_wght400_GRAD0_opsz48.51687e1843b92e30b0d022819f391d4d.svg",
-    "static/media/edit_FILL0_wght400_GRAD0_opsz48.svg": "/static/media/edit_FILL0_wght400_GRAD0_opsz48.001c891bb22da95d5b26bfb408f4622f.svg",
-    "static/media/navigate_next_FILL0_wght400_GRAD0_opsz48.svg": "/static/media/navigate_next_FILL0_wght400_GRAD0_opsz48.9d980f7239270f683b4a10d2cb48aeb8.svg",
-    "static/media/expand_more_FILL0_wght400_GRAD0_opsz48.svg": "/static/media/expand_more_FILL0_wght400_GRAD0_opsz48.7dd0cb697b666a745cd512948cbbb0b9.svg",
-    "main.2c7317cd.css.map": "/static/css/main.2c7317cd.css.map",
-    "main.86e6ee98.js.map": "/static/js/main.86e6ee98.js.map",
-    "787.28cb0dcd.chunk.js.map": "/static/js/787.28cb0dcd.chunk.js.map"
+    "main.css": "/writinghelper/static/css/main.28ba3aa4.css",
+    "main.js": "/writinghelper/static/js/main.101d7406.js",
+    "static/js/787.28cb0dcd.chunk.js": "/writinghelper/static/js/787.28cb0dcd.chunk.js",
+    "static/media/NanumPenScript-Regular.ttf": "/writinghelper/static/media/NanumPenScript-Regular.124b3244c7b453983cb5.ttf",
+    "static/media/Poppins-Light.ttf": "/writinghelper/static/media/Poppins-Light.7641a0f76ca9ef6c252c.ttf",
+    "static/media/Poppins-Regular.ttf": "/writinghelper/static/media/Poppins-Regular.35d26b781dc5fda684cc.ttf",
+    "static/media/Poppins-Medium.ttf": "/writinghelper/static/media/Poppins-Medium.673ed42382ab264e0bf5.ttf",
+    "static/media/Poppins-SemiBold.ttf": "/writinghelper/static/media/Poppins-SemiBold.ac8d04b620e54be9b0f0.ttf",
+    "static/media/Poppins-Black.ttf": "/writinghelper/static/media/Poppins-Black.d8b850b920a5ef49d752.ttf",
+    "static/media/pencil.svg": "/writinghelper/static/media/pencil.de3705b8bf6d1cc2842623d218b706d3.svg",
+    "index.html": "/writinghelper/index.html",
+    "static/media/create_new_folder_FILL0_wght400_GRAD0_opsz48.svg": "/writinghelper/static/media/create_new_folder_FILL0_wght400_GRAD0_opsz48.eea7da6e07a61d2bc897060f08e32b58.svg",
+    "static/media/delete_FILL0_wght400_GRAD0_opsz48.svg": "/writinghelper/static/media/delete_FILL0_wght400_GRAD0_opsz48.9791eda45730d66280b35447023d2c3c.svg",
+    "static/media/note_add_FILL0_wght400_GRAD0_opsz48.svg": "/writinghelper/static/media/note_add_FILL0_wght400_GRAD0_opsz48.51687e1843b92e30b0d022819f391d4d.svg",
+    "static/media/edit_FILL0_wght400_GRAD0_opsz48.svg": "/writinghelper/static/media/edit_FILL0_wght400_GRAD0_opsz48.001c891bb22da95d5b26bfb408f4622f.svg",
+    "static/media/navigate_next_FILL0_wght400_GRAD0_opsz48.svg": "/writinghelper/static/media/navigate_next_FILL0_wght400_GRAD0_opsz48.9d980f7239270f683b4a10d2cb48aeb8.svg",
+    "static/media/expand_more_FILL0_wght400_GRAD0_opsz48.svg": "/writinghelper/static/media/expand_more_FILL0_wght400_GRAD0_opsz48.7dd0cb697b666a745cd512948cbbb0b9.svg",
+    "main.28ba3aa4.css.map": "/writinghelper/static/css/main.28ba3aa4.css.map",
+    "main.101d7406.js.map": "/writinghelper/static/js/main.101d7406.js.map",
+    "787.28cb0dcd.chunk.js.map": "/writinghelper/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.2c7317cd.css",
-    "static/js/main.86e6ee98.js"
+    "static/css/main.28ba3aa4.css",
+    "static/js/main.101d7406.js"
   ]
 }
