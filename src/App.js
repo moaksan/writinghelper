@@ -30,6 +30,7 @@ function App() {
       await initializeUserInfo({state, setState})
     }
     fetchUserInfo()
+    console.log(process.env.PUBLIC_URL)
   }, [])
 
   return (
