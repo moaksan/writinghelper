@@ -1,12 +1,11 @@
-
-.workplace{
+.storage{
   height:100vh;
   overflow: hidden;
   user-select: none;
   
   .section{
     display: grid;
-    grid-template-columns: 260px 1fr 250px;
+    grid-template-columns: 260px 1fr 300px;
     column-gap: 30px;
     height:calc(100% - 70px);
     overflow: hidden;
@@ -20,15 +19,15 @@
       .manipulateFolderFile{
         padding:10px 0;
         background-color: grey;
-        .buttons {
-          display: flex;
-          justify-content: space-around;
+        .buttons{
+          display:flex;
+          justify-content:space-around;
           align-items: center;
           width:220px;
-          .img {
+          .img{
             display: flex;
             align-items: center;
-            img {
+            img{
               width:30px;
             }
           }
@@ -77,20 +76,6 @@
         }
       }
 
-      .pageList{
-        // background-color: red;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        justify-items: center;
-        padding: 20px 0 30px 0;
-        .page{
-          background-color: beige;
-          border:solid aquamarine 3px;
-          width: 70%;
-          height: 150px;
-          margin: 10px 10px;
-        }
-      }
     }
     .leftside::-webkit-scrollbar{
       width:6px;
@@ -103,19 +88,48 @@
 
     .middleside{
       overflow: overlay;
-      height: 100%;
-      padding: 30px 0;
-      .writing{
-        background-color: grey;
-        display:flex;
-        flex-direction: column;
-        align-items: center;
-        .form{
-          width:80%;
-          textarea{
-            border:solid 3px aqua;
-            width: 100%;
-            height: 500px;
+      font-family: 'Poppins';
+      font-size: 18px;
+      background-color: skyblue;
+      display: flex;
+      justify-content: center;
+      .reading.word{
+        margin:30px 0;
+        width:80%;
+        .page{
+          border: solid 3px red;
+          height: 500px;
+          margin: 20px 0;
+          .content{
+            
+          }
+        }
+      }
+      .reading.book{
+        width:100%;
+        height:500px;
+        .buttons{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: 20px 0;
+          button{
+            margin:0 10px;
+          }
+        }
+        .pages{
+          display: flex;
+          justify-content: space-between;
+          height:100%;
+          .left-page{
+            border:solid 3px red;
+            width:47%;
+            height:100%;
+          }
+          .right-page{
+            border:solid 3px red;
+            width:47%;
+            height:100%;
           }
         }
       }
@@ -131,9 +145,42 @@
 
     .rightside{
       overflow: overlay;
-      height: 100%;
-      .utility{
-        background-color: green;
+      background-color: green;
+      padding: 20px 20px;
+      .reading-style{
+        margin: 20px 0;
+        .explanation{
+          margin: 10px 0;
+        }
+        .buttons{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          button{
+            margin:0 10px;
+          }
+          .word{
+            height:30px;
+          }
+          .book{
+            height:30px;
+          }
+        }
+        
+      }
+      .page-search{
+        .explanation{
+          margin:10px 0;
+        }
+        form{
+          display:flex;
+          justify-content:flex-start;
+          align-items:center;
+          .page-number{
+            width:50px;
+          }
+        }
+        
       }
     }
     .rightside::-webkit-scrollbar{

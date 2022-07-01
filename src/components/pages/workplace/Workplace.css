@@ -1,13 +1,17 @@
 .workplace {
   height: 100vh;
   overflow: hidden;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .workplace .section {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 300px 1fr 300px;
-      grid-template-columns: 300px 1fr 300px;
+  -ms-grid-columns: 260px 1fr 250px;
+      grid-template-columns: 260px 1fr 250px;
   -webkit-column-gap: 30px;
           column-gap: 30px;
   height: calc(100% - 70px);
@@ -16,12 +20,46 @@
 
 .workplace .section .leftside {
   height: 100%;
-  overflow: hidden scroll;
+  overflow: overlay;
+  background-color: #cccccc;
+  padding: 0 0;
+  margin: 0 0;
+}
+
+.workplace .section .leftside .manipulateFolderFile {
+  padding: 10px 0;
+  background-color: grey;
+}
+
+.workplace .section .leftside .manipulateFolderFile .buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 220px;
+}
+
+.workplace .section .leftside .manipulateFolderFile .buttons .img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.workplace .section .leftside .manipulateFolderFile .buttons .img img {
+  width: 30px;
 }
 
 .workplace .section .leftside .list {
   font-family: 'Poppins';
-  padding: 20px 0;
+  padding: 10px 0;
+  cursor: pointer;
 }
 
 .workplace .section .leftside .list .folder-wrap {
@@ -42,8 +80,37 @@
   font-weight: 500;
 }
 
-.workplace .section .leftside .pages {
-  background-color: red;
+.workplace .section .leftside .list .folder-name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.workplace .section .leftside .list .folder-name .isOpenImg {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.workplace .section .leftside .list .folder-name .isOpenImg img {
+  height: 25px;
+}
+
+.workplace .section .leftside .list .selected {
+  background-color: skyblue;
+}
+
+.workplace .section .leftside .list .hide {
+  display: none;
+}
+
+.workplace .section .leftside .pageList {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 1fr;
@@ -52,8 +119,9 @@
   padding: 20px 0 30px 0;
 }
 
-.workplace .section .leftside .pages .page {
-  background-color: orange;
+.workplace .section .leftside .pageList .page {
+  background-color: beige;
+  border: solid aquamarine 3px;
   width: 70%;
   height: 150px;
   margin: 10px 10px;
@@ -70,13 +138,13 @@
 }
 
 .workplace .section .middleside {
-  overflow: hidden scroll;
+  overflow: overlay;
   height: 100%;
   padding: 30px 0;
 }
 
 .workplace .section .middleside .writing {
-  background-color: blue;
+  background-color: grey;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -94,6 +162,7 @@
 }
 
 .workplace .section .middleside .writing .form textarea {
+  border: solid 3px aqua;
   width: 100%;
   height: 500px;
 }
@@ -109,7 +178,7 @@
 }
 
 .workplace .section .rightside {
-  overflow: hidden scroll;
+  overflow: overlay;
   height: 100%;
 }
 

@@ -2,7 +2,6 @@ import {Link} from 'react-router-dom'
 import './Header.css'
 
 export default function Header({state, setState}){
-
   return (
     <div className='header'>
       <nav className="nav">

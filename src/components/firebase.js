@@ -2,7 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
-import { getFirestore, collection, doc, addDoc, getDocs, getDoc } from 'firebase/firestore'
+import { getFirestore, collection, doc, addDoc, getDoc, setDoc, updateDoc, arrayUnion, increment, deleteField, arrayRemove } from 'firebase/firestore'
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -42,8 +42,54 @@ export const user= ()=>{
   return auth.currentUser
 }
 
-export const writeUserData= (email)=>{
+export const addUser= (email)=>{
+  try {
+    const docRef = addDoc(collection(database, "users"), {
+      email: {
+        'storage':{
+          '빈 폴더':null
+        }
+      }
+    });
+    console.log("Document written with ID: ", docRef.id);
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }
+}
 
+export const writeUserData= async (email, targetId, newId, name, ids, type)=>{
+  const key1= `storage.${targetId}.${newId}`
+  const key2= `storage.${newId}`
+  
+  console.log(key1, key2)
+  ids[Number(newId)]=newId
+
+  await updateDoc(doc(database, "users", email), {
+    "storage.info.ids": ids,
+    "storage.info.cnt": increment(1)
+  })
+
+  if(type==='folder'){
+    await updateDoc(doc(database, "users", email), {
+      [key1]:{
+        id: newId,
+        type: 'folder',
+        name: name,
+        isOpen:true
+      },
+      [key2]:{}
+    })
+  } else{
+    await updateDoc(doc(database, "users", email), {
+      [key1]:{
+        id: newId,
+        type: 'file',
+        name: name,
+        content: ['']
+      }
+    })
+  }
+  
 }
 
 export const readUserData= async (email)=>{
@@ -62,17 +108,24 @@ export const readUserData= async (email)=>{
   }
 }
 
-export const addUser= (email)=>{
-  try {
-    const docRef = addDoc(collection(database, "users"), {
-      email: {
-        'storage':{
-          '빈 폴더':null
-        }
-      }
-    });
-    console.log("Document written with ID: ", docRef.id);
-  } catch (e) {
-    console.error("Error adding document: ", e);
+export const deleteUserData= async (email, targetId, deleteId, ids, type)=>{
+  const key1= `storage.${targetId}.${deleteId}`
+  const key2= `storage.${deleteId}`
+
+  ids[Number(deleteId)]=null
+  console.log(targetId, deleteId)
+  if(type==='folder'){
+    await updateDoc(doc(database, "users", email), {
+      [key1]: deleteField(),
+      [key2]: deleteField(),
+      "storage.info.ids": ids,
+      "storage.info.cnt": increment(-1)
+    })
+  } else{
+    await updateDoc(doc(database, "users", email), {
+      [key1]: deleteField(),
+      "storage.info.ids": ids,
+      "storage.info.cnt": increment(-1)
+    })
   }
 }

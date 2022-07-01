@@ -5,11 +5,10 @@ export async function initializeUserInfo({state, setState}){
   try{
     const cache= await caches.open(cacheName)
     const isLogin= await cache.match('isLogin')
-    
+
     if(isLogin){
       
       if(await isLogin.json()){
-        console.log('yes')
         const userInfo= await (await cache.match('userInfo')).json()
         await setState({
           ...state,
