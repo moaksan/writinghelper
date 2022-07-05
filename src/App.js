@@ -8,6 +8,7 @@ import Signup from './components/pages/signup/Signup'
 import Login from './components/pages/login/Login'
 import Logout from './components/pages/logout/Logout'
 import { initializeUserInfo } from 'components/initialize/InitializeUserInfo'
+import { initializeStorage } from 'components/initialize/InitializeStorage'
 
 import {useState, useEffect} from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
@@ -24,25 +25,34 @@ const initialState={
 
 function App() {
   const [state, setState]= useState(initialState)
+  const [storage, setStorage]= useState()
 
   useEffect(()=>{
     async function fetchUserInfo(){
       await initializeUserInfo({state, setState})
+      await initializeStorage({storage, setStorage})
     }
     fetchUserInfo()
-    console.log(process.env.PUBLIC_URL)
   }, [])
+
+  useEffect(()=>{
+    console.log(state)
+  }, [state])
+
+  useEffect(()=>{
+    console.log(storage)
+  }, [storage])
 
   return (
     <div className="App">
       <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Routes>
           <Route exact path='/' element={<MainPage state={state} setState={setState}/>}></Route>
-          <Route path='/workplace' element={<Workplace state={state} setState={setState}/>}></Route>
-          <Route path='/storage' element={<Storage state={state} setState={setState}></Storage>}></Route>
+          <Route path='/workplace' element={<Workplace state={state} setState={setState} storage={storage} setStorage={setStorage}/>}></Route>
+          <Route path='/storage' element={<Storage state={state} setState={setState} storage={storage} setStorage={setStorage}></Storage>}></Route>
           <Route path='/signup' element={<Signup state={state} setState={setState}/>}></Route>
-          <Route path='/login' element={<Login state={state} setState={setState}/>}></Route>
-          <Route path='/logout' element={<Logout state={state} setState={setState}/>}></Route>
+          <Route path='/login' element={<Login state={state} setState={setState} storage={storage} setStorage={setStorage}/>}></Route>
+          <Route path='/logout' element={<Logout state={state} setState={setState} storage={storage} setStorage={setStorage}/>}></Route>
           <Route path='*' element={<NotFound/>}></Route>
         </Routes>
       </BrowserRouter>

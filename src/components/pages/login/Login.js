@@ -2,8 +2,9 @@ import React, {useState} from 'react'
 import { loginEmail, readUserData } from 'components/firebase'
 import './Login.css'
 import {useNavigate} from 'react-router-dom'
+import { setSelectionRange } from '@testing-library/user-event/dist/utils'
 
-export default function Login({state, setState}){
+export default function Login({state, setState, storage, setStorage}){
   const [email, setEmail]= useState('')
   const [password, setPassword]= useState('')
   
@@ -22,24 +23,30 @@ export default function Login({state, setState}){
           userInfo:{
             email: email,
             password: password
-          }
+          },
+          currentFileId:null,
+          selectedFolderFileId:null,
+          currentFilePageNum:0,
+          currentFilePage:1,
+          readingStyle:'word'
         }
       })
       
       const cache= await caches.open('writinghelper')
-      cache.put('isLogin', new Response(true))
-      cache.put('userInfo', new Response(JSON.stringify({
+      await cache.put('isLogin', new Response(true))
+      await cache.put('userInfo', new Response(JSON.stringify({
         'email':email,
         'password':password
       })))
-      cache.put('data', new Response(await JSON.stringify(await readUserData(email))))
+      await cache.put('data', new Response(await JSON.stringify(await readUserData(email))))
+
+      setStorage((await(await cache.match('data')).json()).storage)
 
       navigate('/', {replace: true})
       return res.user
     }).catch(err=>{
       console.log(err.message)
     })
-    
   }
   
   return (

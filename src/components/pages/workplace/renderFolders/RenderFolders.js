@@ -20,6 +20,7 @@ export default function RenderFolders({storage, setStorage, state, setState}){
         <div key={key} id={'el'+key} className='folder'>
           <div className={key===state.selectedFolderFileId ? 'folder-name selected' : 'folder-name'} 
           onClick={(e)=>{
+            console.log('onclick')
             setStorage({
               ...storage,
               [now]:{

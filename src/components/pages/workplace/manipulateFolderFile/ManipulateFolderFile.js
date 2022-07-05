@@ -6,6 +6,10 @@ export default function ManipulateFolderFile({state, setState, storage, setStora
   useEffect(()=>{
     console.log(storage)
   }, [storage])
+  useEffect(()=>{
+    console.log(state)
+  }, [state])
+
   async function addFolderFileButtonClick(type){
 
     let target

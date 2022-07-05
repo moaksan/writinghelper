@@ -1,25 +1,40 @@
 
+import { useState } from "react"
 
-export default function RenderPages({storage, state}){
-  if(!storage || !state) return
+export default function RenderPages({storage, setStorage, state}){
+  const [pageNum, setPageNum]= useState(0)
+  if(!storage || !state || !state.currentFileId) return
+
+  const currentFileId=state.currentFileId
   
-  for(const i in storage){
-    for(const j in storage[i]){
-      if(state.currentFileId===j){
-
-        return (
-          <div className="writing">
-            <div className="form">
-              {storage[i][j].content.map(page=>
-              <div key={page} className='textarea'>
-                <textarea placeholder='write here' defaultValue={page}></textarea>
-              </div>)}
-            </div>
-          </div>
-        )
-      }
+  let currentFolderId
+  for(let i in storage){
+    if(currentFileId in storage[i]){
+      currentFolderId=i
     }
   }
-         
-  return 
+  
+  console.log(currentFileId, currentFolderId)
+  
+  function onChange(e){
+    console.log(e.target.value)
+    const isOverflowing= e.target.clientWidth < e.target.scrollWidth || e.target.clientHeight < e.target.scrollHeight;
+    
+    if(isOverflowing){
+      console.log('overflow')
+      
+    }
+  }
+
+
+  return (
+    <div className="writing">
+      <div className="form">
+        {storage[currentFolderId][currentFileId].content.map((page, index)=>
+        <div key={page} className='textarea'>
+          <textarea placeholder='write here' defaultValue={page} id={index} onChange={onChange}></textarea>
+        </div>)}
+      </div>
+    </div>
+  )
 }
