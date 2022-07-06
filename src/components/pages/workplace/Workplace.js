@@ -14,7 +14,7 @@ export default function Workplace({state, setState, storage, setStorage}){
   return (
     <div className="workplace">
       <Header state={state} setState={setState}></Header>
-      
+
       <section className='section'>
         <div className='leftside'>
           <ManipulateFolderFile state={state} setState={setState} storage={storage} setStorage={setStorage}></ManipulateFolderFile>
@@ -23,11 +23,11 @@ export default function Workplace({state, setState, storage, setStorage}){
 
           <RenderPageList storage={storage} state={state}></RenderPageList>
         </div>
-
+        
         <div className='middleside'>
           <RenderPages storage={storage} setStorage={setStorage} state={state}></RenderPages>
         </div>
-
+        
         <div className='rightside'>
           <div className='utility'>
             utility

@@ -35,7 +35,7 @@ export async function initializeUserInfo({state, setState}){
     }
     const isLogin= await (await cache.match('isLogin')).json()
     const userInfo= await (await cache.match('userInfo')).body
-    console.log(userInfo)
+    console.log(await (await cache.match('data')).json())
     setState({
       ...state,
       isLogin: isLogin,
