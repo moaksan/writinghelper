@@ -44,24 +44,39 @@ export const user= ()=>{
 
 export const addUser= (email)=>{
   try {
-    const docRef = addDoc(collection(database, "users"), {
-      email: {
-        'storage':{
-          '빈 폴더':null
+    const docRef = setDoc(doc(database, "users", email), {
+      'storage':{
+        '0':{
+          '1':{
+            id:'1',
+            type:'folder',
+            name:'빈 폴더',
+            isOpen:true
+          }
+        },
+        '1':{
+          '2':{
+            id:'2',
+            type:'file',
+            name:'빈 파일',
+            content:['']
+          }
+        },
+        info:{
+          ids:['0','1','2'],
+          cnt:2
         }
       }
     });
-    console.log("Document written with ID: ", docRef.id);
   } catch (e) {
-    console.error("Error adding document: ", e);
+    console.error("Error addUser: ", e);
   }
 }
 
-export const writeUserData= async (email, targetId, newId, name, ids, type)=>{
+export const addFolderFileUserData= async (email, targetId, newId, name, ids, type)=>{
   const key1= `storage.${targetId}.${newId}`
   const key2= `storage.${newId}`
   
-  console.log(key1, key2)
   ids[Number(newId)]=newId
 
   await updateDoc(doc(database, "users", email), {
@@ -92,6 +107,47 @@ export const writeUserData= async (email, targetId, newId, name, ids, type)=>{
   
 }
 
+export const deleteUserData= async (email, targetId, deleteId, ids, cnt, type, storage)=>{
+
+  if(type==='folder'){
+    const key= `storage.${targetId}.${deleteId}`
+    await updateDoc(doc(database, "users", email), {
+      [key]: deleteField()
+    })
+
+    let q=[deleteId]
+    while(q.length!==0){
+      const now=q.shift()
+      for(let i in storage[now]){
+        if(storage[now][i].type==='folder')
+          q.push(i)
+      }
+      const key= `storage.${now}`
+      await updateDoc(doc(database, "users", email), {
+        [key]: deleteField()
+      })
+    }
+  } else{
+    const key= `storage.${targetId}.${deleteId}`
+    await updateDoc(doc(database, "users", email), {
+      [key]: deleteField()
+    })
+  }
+
+  await updateDoc(doc(database, "users", email), {
+    "storage.info.ids": ids,
+    "storage.info.cnt": increment(-cnt)
+  })
+
+}
+
+export const renameUserData= async (email, folderId, renameId, newname)=>{
+  const key= `storage.${folderId}.${renameId}.name`
+  await updateDoc(doc(database, "users", email), {
+    [key]: newname
+  })
+}
+
 export const readUserData= async (email)=>{
   if(email==null){
     console.log('email is null')
@@ -108,24 +164,11 @@ export const readUserData= async (email)=>{
   }
 }
 
-export const deleteUserData= async (email, targetId, deleteId, ids, type)=>{
-  const key1= `storage.${targetId}.${deleteId}`
-  const key2= `storage.${deleteId}`
-
-  ids[Number(deleteId)]=null
-  console.log(targetId, deleteId)
-  if(type==='folder'){
-    await updateDoc(doc(database, "users", email), {
-      [key1]: deleteField(),
-      [key2]: deleteField(),
-      "storage.info.ids": ids,
-      "storage.info.cnt": increment(-1)
-    })
-  } else{
-    await updateDoc(doc(database, "users", email), {
-      [key1]: deleteField(),
-      "storage.info.ids": ids,
-      "storage.info.cnt": increment(-1)
-    })
-  }
+export const updateUserData= async (email, folderId, fileId, content)=>{
+  const key= `storage.${folderId}.${fileId}.content`
+  
+  await updateDoc(doc(database, "users", email), {
+    [key]: content
+  })
 }
+

@@ -14,8 +14,6 @@ export default function RenderPages({storage, setStorage, state}){
     }
   }
   
-  console.log(currentFileId, currentFolderId)
-  
   function onChange(e){
     console.log(e.target.value)
     const isOverflowing= e.target.clientWidth < e.target.scrollWidth || e.target.clientHeight < e.target.scrollHeight;

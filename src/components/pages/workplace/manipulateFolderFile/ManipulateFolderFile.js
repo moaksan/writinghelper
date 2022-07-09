@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { writeUserData, deleteUserData } from 'components/firebase'
+import { addFolderFileUserData, deleteUserData, renameUserData } from 'components/firebase'
 
 export default function ManipulateFolderFile({state, setState, storage, setStorage}){
 
@@ -96,7 +96,7 @@ export default function ManipulateFolderFile({state, setState, storage, setStora
     }
     
     if(state.isLogin){
-      writeUserData(state.userInfo.email, targetId, newId, name, ids, type)
+      addFolderFileUserData(state.userInfo.email, targetId, newId, name, ids, type)
     }
 
     setStorage(newStorage)
@@ -108,29 +108,48 @@ export default function ManipulateFolderFile({state, setState, storage, setStora
     if(state.selectedFolderFileId===null) return
 
     let newStorage={...storage}
-    let targetId, deleteId, type
+    let targetId, deleteId=state.selectedFolderFileId, deleteInner=[], type, cnt=1
     const ids=[...storage.info.ids]
 
     for(const i in storage){
-      if(storage[i][state.selectedFolderFileId]!=null){
-        delete newStorage[i][state.selectedFolderFileId]
-        newStorage.info.ids[Number(state.selectedFolderFileId)]=null
-        newStorage.info.cnt-=1
-        setStorage(newStorage)
+      if(storage[i][deleteId]!=null){
         targetId=i
-        deleteId=state.selectedFolderFileId
       }
     }
-
-    if(storage[state.selectedFolderFileId]!==null){
-      delete newStorage[state.selectedFolderFileId]
-      setStorage(newStorage)
+    
+    if(storage[targetId][deleteId].type==='folder'){
+      delete newStorage[targetId][deleteId]
+      let q=[deleteId]
+      ids[Number(deleteId)]=null
+      console.log(q, !q)
+      while(q.length!==0){
+        console.log('yes')
+        const now=q.shift()
+        for(let i in storage[now]){
+          if(newStorage[now][i].type==='folder'){
+            q.push(i)
+          }
+          ids[Number(i)]=null
+          cnt+=1
+        }
+        delete newStorage[now]
+      }
+      
       type='folder'
     } else{
+      delete newStorage[targetId][deleteId]
       type='file'
     }
 
-    setState({
+    newStorage.info.ids=ids
+    newStorage.info.cnt-=cnt
+
+    if(state.isLogin){
+      await deleteUserData(state.userInfo.email, targetId, deleteId, ids, cnt, type, storage)
+    }
+
+    await setStorage(newStorage)
+    await setState({
       ...state,
       selectedFolderFileId: null,
       currentFileId: null
@@ -138,26 +157,29 @@ export default function ManipulateFolderFile({state, setState, storage, setStora
 
     const cache= await caches.open('writinghelper')
     cache.put('/data', new Response(await JSON.stringify({storage:newStorage})))
-
-    if(state.isLogin){
-      deleteUserData(state.userInfo.email, targetId, deleteId, ids, type)
-    }
   }
 
   async function renameFolderFileButtonClick(){
     if(state.selectedFolderFileId===null) return
+
+    let folderId, renameId=state.selectedFolderFileId
     
+    for(const i in storage){
+      if(renameId in storage[i]){
+        folderId=i
+      }
+    }
+
     let newStorage={...storage}
 
     let target, targetContent
-    if(storage[state.selectedFolderFileId]){
-      target=document.querySelector(`.list #el${state.selectedFolderFileId} .folder-name`)
+    if(storage[renameId]){
+      target=document.querySelector(`.list #el${renameId} .folder-name`)
       targetContent=target.querySelector('.folder-name-content')
     } else{
-      target=document.querySelector(`.list #el${state.selectedFolderFileId} .file-name`)
+      target=document.querySelector(`.list #el${renameId} .file-name`)
       targetContent=target.querySelector('.file-name-content')
     }
-    
     
     targetContent.classList.add('hide')
     const tmp=document.createElement('div')
@@ -167,15 +189,16 @@ export default function ManipulateFolderFile({state, setState, storage, setStora
       e.preventDefault()
 
       const newname=tmp.querySelector('input').value.trim()
-      for(const i in storage){
-        if(storage[i][state.selectedFolderFileId]!=null){
-          newStorage[i][state.selectedFolderFileId].name= newname
-          setStorage(newStorage)
+      newStorage[folderId][renameId].name= newname
+      setStorage(newStorage)
 
-          const cache= await caches.open('writinghelper')
-          cache.put('/data', new Response(await JSON.stringify({storage:newStorage})))
-        }
+      const cache= await caches.open('writinghelper')
+      cache.put('/data', new Response(await JSON.stringify({storage:newStorage})))
+      
+      if(state.isLogin){
+        await renameUserData(state.userInfo.email, folderId, renameId, newname)
       }
+
       targetContent.classList.remove('hide')
       tmp.querySelector('input').blur()
       tmp.remove()
@@ -186,6 +209,7 @@ export default function ManipulateFolderFile({state, setState, storage, setStora
     })
     target.appendChild(tmp)
     tmp.querySelector('input').focus()
+    
   }
 
   return (

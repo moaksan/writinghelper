@@ -43,8 +43,10 @@ export default function Login({state, setState, storage, setStorage}){
       setStorage((await(await cache.match('data')).json()).storage)
 
       navigate('/', {replace: true})
+
       return res.user
-    }).catch(err=>{
+    })
+    .catch(err=>{
       console.log(err.message)
     })
   }

@@ -19,7 +19,11 @@ export default function Header({state, setState}){
             ? <Link to='/logout'><div>Log Out</div></Link>
             : <Link to='/login'><div>Log In</div></Link>
           }
-          <Link to='/signup'><div>Sign Up</div></Link>
+          {
+            state.isLogin
+            ? ''
+            : <Link to='/signup'><div>Sign Up</div></Link>
+          }
           <Link to='/setting'><div>Setting</div></Link>
         </div>
       </nav>

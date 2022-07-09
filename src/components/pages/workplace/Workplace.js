@@ -8,6 +8,7 @@ import ManipulateFolderFile from 'components/pages/workplace/manipulateFolderFil
 import RenderFolders from 'components/pages/workplace/renderFolders/RenderFolders'
 import RenderPages from 'components/pages/workplace/renderPages/RenderPages'
 import RenderPageList from 'components/pages/workplace/renderPageList/RenderPageList'
+import Utility from 'components/pages/workplace/utility/Utility'
 
 export default function Workplace({state, setState, storage, setStorage}){
   
@@ -29,10 +30,7 @@ export default function Workplace({state, setState, storage, setStorage}){
         </div>
         
         <div className='rightside'>
-          <div className='utility'>
-            utility
-            <div className='submit'><input type='submit' value='저장'></input></div>
-          </div>
+          <Utility state={state} setState={setState} storage={storage} setStorage={setStorage}></Utility>
         </div>
       </section>
     </div>
