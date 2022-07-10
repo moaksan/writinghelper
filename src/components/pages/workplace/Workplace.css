@@ -185,20 +185,60 @@
 
 .workplace .section .rightside .utility {
   background-color: green;
+  padding: 20px 10px;
+  font-size: 36px;
 }
 
 .workplace .section .rightside .utility .save {
-  width: 50px;
-  height: 40px;
+  margin: 20px 0;
+}
+
+.workplace .section .rightside .utility .save .content {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.workplace .section .rightside .utility .similarWords {
+  margin: 20px 0;
+}
+
+.workplace .section .rightside .utility .similarWords .content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 20px 0 0;
+}
+
+.workplace .section .rightside .utility .similarWords .content .input {
+  width: 140px;
+}
+
+.workplace .section .rightside .utility .similarWords .content .request {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.workplace .section .rightside .utility .similarWords .response {
+  margin: 5px 10px;
+  font-size: 30px;
+  font-weight: 500;
 }
 
 .workplace .section .rightside::-webkit-scrollbar {

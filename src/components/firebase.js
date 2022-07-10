@@ -78,7 +78,7 @@ export const addFolderFileUserData= async (email, targetId, newId, name, ids, ty
   const key2= `storage.${newId}`
   
   ids[Number(newId)]=newId
-
+  console.log(email, targetId, newId, name, ids)
   await updateDoc(doc(database, "users", email), {
     "storage.info.ids": ids,
     "storage.info.cnt": increment(1)

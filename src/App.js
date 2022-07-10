@@ -32,7 +32,26 @@ function App() {
       await initializeUserInfo({state, setState})
       await initializeStorage({storage, setStorage})
     }
+    
+    async function handleTabClose(e){
+      e.preventDefault()
+
+      setState({
+        ...state,
+        isLogin: false,
+        userInfo: null,
+        currentFileId:null,
+        selectedFolderFileId:null,
+        currentFilePageNum:0,
+        currentFilePage:1,
+        readingStyle:'word'
+      })
+
+      await caches.delete('writinghelper')
+    }
+
     fetchUserInfo()
+    window.addEventListener('beforeunload', handleTabClose)
   }, [])
 
   useEffect(()=>{

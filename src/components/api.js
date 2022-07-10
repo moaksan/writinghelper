@@ -1,17 +1,26 @@
 
-export default async function request({url, parameter}){
+export default async function request({word, lang}){
   
-  const fullUrl=`${url}?${Object.keys(parameter).map(key=> `${key}=${parameter[key]}`).join('&')}`
-  console.log(fullUrl)
-
   try{
-    const res= await fetch(fullUrl)
+    const options = {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        'X-RapidAPI-Key': 'b744195f13msh446819f5cbb85b5p10c26ejsn8e4ff45530d9',
+        'X-RapidAPI-Host': 'word-similarity2.p.rapidapi.com'
+      },
+      body: `{"word":"${word}","lang":"${lang}","wordnum":10}`
+    };
 
-    if(!res.ok){
-      throw new Error('서버 이상')
-    }
-    return await res.json()
+    const res= await fetch('https://word-similarity2.p.rapidapi.com/api/v1/similar-words', options)
+      .then(response => response.json())
+      .catch(err => console.error(err));
+    
+    console.log(res)
+
+    return res
   } catch(e){
     throw new Error(e.message)
   }
 }
+

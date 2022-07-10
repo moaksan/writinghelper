@@ -135,16 +135,43 @@
       height: 100%;
       .utility{
         background-color: green;
+        padding:20px 10px;
+        font-size: 36px;
 
         .save{
-          width:50px;
-          height:40px;
-          display:flex;
-          justify-content: center;
-          align-items: center;
+          margin: 20px 0;
+          .title{
 
-          button{
-            
+          }
+          .content{
+            display: flex;
+            justify-content:space-between;
+            align-items: center;
+          }
+        }
+        .similarWords{
+          margin: 20px 0;
+          .title{
+
+          }
+          .content{
+            display: flex;
+            justify-content:space-between;
+            align-items: center;
+            margin: 0 20px 0 0;
+            .input{
+              width:140px;
+            }
+            .request{
+              display:flex;
+              align-items: center;
+            }
+          }
+          .response{
+            margin: 5px 10px;
+            // font-family: 'Poppins';
+            font-size: 30px;
+            font-weight: 500;
           }
         }
       }
