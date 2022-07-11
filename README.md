@@ -4,4 +4,34 @@
 ## 링크
 [https://moaksan.github.io/writinghelper/](https://moaksan.github.io/writinghelper/)
 
-## 구조
+## 디렉토리 구조
+```
+.root
+├─build
+├─node_modules
+├─public
+└─src
+  ├─assets
+  ├─components
+  │  ├─header
+  │  ├─initialize
+  │  └─pages
+  │      ├─login
+  │      ├─logout
+  │      ├─mainPage
+  │      ├─notFound
+  │      ├─signup
+  │      ├─storage
+  │      │  ├─pageSearch
+  │      │  ├─readingStyle
+  │      │  └─renderPagesReading
+  │      └─workplace
+  │          ├─manipulateFolderFile
+  │          ├─renderFolders
+  │          ├─renderPageList
+  │          ├─renderPages
+  │          └─utility
+  └─fonts
+      ├─Nanum_Pen_Script
+      └─Poppins
+```
