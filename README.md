@@ -3,7 +3,8 @@
 ## WritingHelper
 글쓰기에 도움이 되는 웹페이지를 만들어 보고자 한다.   
 
-1. 글을 쓰다가 적절한 단어를 찾고 싶을 때 관련어 검색을 해보자.
+1. 글을 쓰다가 적절한 단어를 찾고 싶을 때 관련어 검색을 해보자. 비슷한 의미, 비슷한 느낌의 단어를 검색하면 관련어를 출력해준다.
+
 
 ## 링크
 [https://moaksan.github.io/writinghelper/](https://moaksan.github.io/writinghelper/)
