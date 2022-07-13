@@ -116,14 +116,12 @@ export default function ManipulateFolderFile({state, setState, storage, setStora
         targetId=i
       }
     }
-    
+    console.log(targetId, deleteId)
     if(storage[targetId][deleteId].type==='folder'){
       delete newStorage[targetId][deleteId]
       let q=[deleteId]
       ids[Number(deleteId)]=null
-      console.log(q, !q)
       while(q.length!==0){
-        console.log('yes')
         const now=q.shift()
         for(let i in storage[now]){
           if(newStorage[now][i].type==='folder'){
@@ -137,6 +135,7 @@ export default function ManipulateFolderFile({state, setState, storage, setStora
       
       type='folder'
     } else{
+      ids[Number(deleteId)]=null
       delete newStorage[targetId][deleteId]
       type='file'
     }

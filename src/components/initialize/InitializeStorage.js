@@ -4,9 +4,8 @@ export async function initializeStorage({storage, setStorage}){
   
   try{
     const cache= await caches.open(cacheName)
-
     const data= await (await cache.match('data')).json()
-    console.log(data)
+    
     setStorage(data.storage)
     
   } catch(e){

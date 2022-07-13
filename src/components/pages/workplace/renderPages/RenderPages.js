@@ -1,9 +1,9 @@
 
 import { useState } from "react"
 
-export default function RenderPages({storage, setStorage, state}){
+export default function RenderPages({storage, setStorage, state, setState}){
   const [pageNum, setPageNum]= useState(0)
-  if(!storage || !state || !state.currentFileId) return
+  if(!storage || !state) return
 
   const currentFileId=state.currentFileId
   
@@ -13,9 +13,9 @@ export default function RenderPages({storage, setStorage, state}){
       currentFolderId=i
     }
   }
-  
+  if(!currentFileId || !currentFolderId) return
+
   function onChange(e){
-    console.log(e.target.value)
     const isOverflowing= e.target.clientWidth < e.target.scrollWidth || e.target.clientHeight < e.target.scrollHeight;
     
     if(isOverflowing){

@@ -35,22 +35,12 @@ function App() {
     
     async function handleTabClose(e){
       e.preventDefault()
-
-      setState({
-        ...state,
-        isLogin: false,
-        userInfo: null,
-        currentFileId:null,
-        selectedFolderFileId:null,
-        currentFilePageNum:0,
-        currentFilePage:1,
-        readingStyle:'word'
-      })
-
-      await caches.delete('writinghelper')
+      
+      sessionStorage.setItem('writinghelper', 'true')
     }
-
+    
     fetchUserInfo()
+    
     window.addEventListener('beforeunload', handleTabClose)
   }, [])
 

@@ -3,10 +3,12 @@ export async function initializeUserInfo({state, setState}){
   let cacheName='writinghelper'
   
   try{
+    const isRefresh= sessionStorage.getItem('writinghelper')
+    console.log(isRefresh)
+
     const cache= await caches.open(cacheName)
-    const cacheExist= await cache.match('isLogin')
-    console.log(cacheExist)
-    if(!cacheExist){
+    
+    if(!isRefresh){
       await cache.put('isLogin', new Response(false))
       await cache.put('userInfo', new Response(null))
       await cache.put('data', new Response(JSON.stringify({
@@ -33,6 +35,7 @@ export async function initializeUserInfo({state, setState}){
           }
       }})))
     }
+
     const isLogin= await (await cache.match('isLogin')).json()
     const userInfo= await (await cache.match('userInfo')).body
     setState({

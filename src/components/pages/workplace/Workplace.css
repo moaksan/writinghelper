@@ -162,7 +162,6 @@
 }
 
 .workplace .section .middleside .writing .form textarea {
-  overflow: hidden;
   border: solid 3px aqua;
   width: 100%;
   height: 500px;
@@ -184,7 +183,7 @@
 }
 
 .workplace .section .rightside .utility {
-  background-color: green;
+  background-color: beige;
   padding: 20px 10px;
   font-size: 36px;
 }

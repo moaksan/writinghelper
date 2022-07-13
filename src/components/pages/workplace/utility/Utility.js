@@ -23,17 +23,17 @@ export default function Utility({state, setState, storage, setStorage}){
       content[i]= targets[i].value
     }
     
-    await setStorage({
-      ...storage,
-      [folderId]:{
-        ...storage[folderId],
-        [fileId]:{
-          ...storage[folderId][fileId],
-          content: content
-        }
-      }
-    })
-    await updateUserData(state.userInfo.email, folderId, fileId, content)
+    let newStorage={...storage}
+    newStorage[folderId][fileId].content=content
+
+    await setStorage(newStorage)
+
+    const cache= await caches.open('writinghelper')
+    cache.put('/data', new Response(await JSON.stringify({storage:newStorage})))
+
+    if(state.isLogin){
+      await updateUserData(state.userInfo.email, folderId, fileId, content)
+    }
   }
 
   async function similarWords(e){
@@ -57,7 +57,6 @@ export default function Utility({state, setState, storage, setStorage}){
   
   return (
     <div className='utility'>
-      {/* <div>utility</div> */}
       <div className='save'>
         <div className='title'>저장</div>
         <div className='content'>
@@ -65,7 +64,7 @@ export default function Utility({state, setState, storage, setStorage}){
         </div>
       </div>
       <div className='similarWords'>
-        <div className='title'>비슷한 단어</div>
+        <div className='title'>관련어 찾기</div>
         <div className='content'>
           <input className='input' onChange={(e)=>setSimilarWordsText(e.target.value)}></input>
           <div className='request'><button onClick={similarWords}>검색</button></div>
