@@ -18,7 +18,7 @@ export default function RenderFolders({storage, setStorage, state, setState}){
         <div key={key} id={'elwrap'+key} className={storage[now][key].isOpen ? 'folder-wrap' : 'folder-wrap hide'}>{[]}</div>
         el[key]=
         <div key={key} id={'el'+key} className='folder'>
-          <div className={key===state.selectedFolderFileId ? 'folder-name selected' : 'folder-name'} 
+          <div className={key===state.selectedFolderFileId ? 'folder-name selected' : 'folder-name'}
           onClick={(e)=>{
             console.log('onclick')
             setStorage({
@@ -57,6 +57,7 @@ export default function RenderFolders({storage, setStorage, state, setState}){
               ...state,
               selectedFolderFileId:key,
               currentFileId:key,
+              currentFolderId: now,
               currentFilePageNum:storage[now][key].content.length,
               currentFilePage: state.currentFileId===key ? state.currentFilePage : 1
             })

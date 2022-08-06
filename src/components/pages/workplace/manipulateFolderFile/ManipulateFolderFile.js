@@ -3,13 +3,6 @@ import { addFolderFileUserData, deleteUserData, renameUserData } from 'component
 
 export default function ManipulateFolderFile({state, setState, storage, setStorage}){
 
-  useEffect(()=>{
-    console.log(storage)
-  }, [storage])
-  useEffect(()=>{
-    console.log(state)
-  }, [state])
-
   async function addFolderFileButtonClick(type){
 
     let target
@@ -91,7 +84,8 @@ export default function ManipulateFolderFile({state, setState, storage, setStora
       setState({
         ...state,
         selectedFolderFileId:newId,
-        currentFileId :newId
+        currentFileId:newId,
+        currentFolderId:targetId
       })
     }
     
@@ -106,9 +100,9 @@ export default function ManipulateFolderFile({state, setState, storage, setStora
 
   async function deleteFolderFileButtonClick(){
     if(state.selectedFolderFileId===null) return
-
+    
     let newStorage={...storage}
-    let targetId, deleteId=state.selectedFolderFileId, deleteInner=[], type, cnt=1
+    let targetId, deleteId=state.selectedFolderFileId, type, cnt=1
     const ids=[...storage.info.ids]
 
     for(const i in storage){
@@ -116,7 +110,7 @@ export default function ManipulateFolderFile({state, setState, storage, setStora
         targetId=i
       }
     }
-    console.log(targetId, deleteId)
+    
     if(storage[targetId][deleteId].type==='folder'){
       delete newStorage[targetId][deleteId]
       let q=[deleteId]
@@ -147,13 +141,14 @@ export default function ManipulateFolderFile({state, setState, storage, setStora
       await deleteUserData(state.userInfo.email, targetId, deleteId, ids, cnt, type, storage)
     }
 
-    await setStorage(newStorage)
     await setState({
       ...state,
       selectedFolderFileId: null,
-      currentFileId: null
+      currentFileId: null,
+      currentFolderId: null
     })
-
+    await setStorage(newStorage)
+    
     const cache= await caches.open('writinghelper')
     cache.put('/data', new Response(await JSON.stringify({storage:newStorage})))
   }

@@ -2,19 +2,14 @@
 
 export default function RenderPageList({storage, state}){
   if(!storage || !state) return
-
-  for(const i in storage){
-    for(const j in storage[i]){
-      if(state.currentFileId===j){
-        return (
-          <div className="pageList">
-            {storage[i][j].content.map(page=>
-            <div key={page} className="page"></div>)}
-          </div>
-        )
-      }
-    }
-  }
+  if(!state.currentFolderId || !state.currentFileId) return
   
-  return 
+  const arr= [...Array(storage[state.currentFolderId][state.currentFileId].content.length).keys()]
+
+  return (
+    <div className="pageList">
+      {arr.map(page=>
+      <div key={page} className="page"></div>)}
+    </div>
+  )
 }

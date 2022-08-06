@@ -78,7 +78,6 @@
       }
 
       .pageList{
-        // background-color: red;
         display: grid;
         grid-template-columns: 1fr 1fr;
         justify-items: center;
@@ -100,24 +99,23 @@
       background: gray;
       border-radius: 5px;
     }
-
+    
     .middleside{
-      overflow: overlay;
+      overflow: scroll;
       height: 100%;
       padding: 30px 0;
+      
       .writing{
-        background-color: grey;
+        overflow: hidden;
         display:flex;
         flex-direction: column;
         align-items: center;
-        .form{
-          width:80%;
-          textarea{
-            // overflow:hidden;
-            border:solid 3px aqua;
-            width: 100%;
-            height: 500px;
-          }
+        justify-content: center;
+        textarea{
+          overflow: clip;
+          font-size:15px;
+          border:solid 3px rgb(16, 97, 97);
+          line-height: 20px;
         }
       }
     }

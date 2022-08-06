@@ -10,13 +10,14 @@ import Logout from './components/pages/logout/Logout'
 import { initializeUserInfo } from 'components/initialize/InitializeUserInfo'
 import { initializeStorage } from 'components/initialize/InitializeStorage'
 
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useRef} from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 const initialState={
   isLogin: false,
   userInfo: null,
   currentFileId:null,
+  currentFolderId:null,
   selectedFolderFileId:null,
   currentFilePageNum:0,
   currentFilePage:1,
@@ -40,18 +41,9 @@ function App() {
     }
     
     fetchUserInfo()
-    
     window.addEventListener('beforeunload', handleTabClose)
   }, [])
-
-  useEffect(()=>{
-    console.log(state)
-  }, [state])
-
-  useEffect(()=>{
-    console.log(storage)
-  }, [storage])
-
+  
   return (
     <div className="App">
       <BrowserRouter basename={process.env.PUBLIC_URL}>

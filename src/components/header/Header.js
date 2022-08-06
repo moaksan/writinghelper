@@ -16,6 +16,11 @@ export default function Header({state, setState}){
         <div className="nav_account">
           {
             state.isLogin
+            ? <div className='email'>{state.userInfo.email}</div>
+            : ''
+          }
+          {
+            state.isLogin
             ? <Link to='/logout'><div>Log Out</div></Link>
             : <Link to='/login'><div>Log In</div></Link>
           }

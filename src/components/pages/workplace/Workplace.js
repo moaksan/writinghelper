@@ -26,7 +26,7 @@ export default function Workplace({state, setState, storage, setStorage}){
         </div>
         
         <div className='middleside'>
-          <RenderPages storage={storage} setStorage={setStorage} state={state}></RenderPages>
+          <RenderPages state={state} setState={setState} storage={storage} setStorage={setStorage} ></RenderPages>
         </div>
         
         <div className='rightside'>

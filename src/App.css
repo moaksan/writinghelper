@@ -33,7 +33,17 @@
   src: url("fonts/Nanum_Pen_Script/NanumPenScript-Regular.ttf");
 }
 
+*{
+  box-sizing: border-box;
+}
+
+html{
+  height: 100%;
+}
+
 body {
   font-family: 'Nanum_Pen_Script';
   font-size: 30px;
+  height: 100vh;
+  
 }
