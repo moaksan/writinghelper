@@ -36,7 +36,6 @@ function App() {
     
     async function handleTabClose(e){
       e.preventDefault()
-      
       sessionStorage.setItem('writinghelper', 'true')
     }
     

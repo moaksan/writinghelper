@@ -29,7 +29,7 @@ export default function Header({state, setState}){
             ? ''
             : <Link to='/signup'><div>Sign Up</div></Link>
           }
-          <Link to='/setting'><div>Setting</div></Link>
+          <div style={{color:'white'}}>Setting</div>
         </div>
       </nav>
     </div>

@@ -12,6 +12,7 @@ import Utility from 'components/pages/workplace/utility/Utility'
 
 export default function Workplace({state, setState, storage, setStorage}){
   
+
   return (
     <div className="workplace">
       <Header state={state} setState={setState}></Header>
@@ -22,7 +23,7 @@ export default function Workplace({state, setState, storage, setStorage}){
           
           <RenderFolders storage={storage} setStorage={setStorage} state={state} setState={setState}></RenderFolders>
 
-          <RenderPageList storage={storage} state={state}></RenderPageList>
+          {/* <RenderPageList storage={storage} state={state}></RenderPageList> */}
         </div>
         
         <div className='middleside'>

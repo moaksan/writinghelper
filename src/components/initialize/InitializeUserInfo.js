@@ -25,7 +25,7 @@ export async function initializeUserInfo({state, setState}){
               id:'2',
               type:'file',
               name:'빈 파일',
-              content:['']
+              content:''
             }
           },
           info:{

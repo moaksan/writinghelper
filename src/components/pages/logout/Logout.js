@@ -27,7 +27,7 @@ export default function Logout({state, setState, storage, setStorage}){
               id:'2',
               type:'file',
               name:'빈 파일',
-              content:['']
+              content:''
             }
           },
           info:{

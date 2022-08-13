@@ -5,8 +5,8 @@
   
   .section{
     display: grid;
-    grid-template-columns: 260px 1fr 300px;
-    column-gap: 30px;
+    grid-template-columns: 260px 1fr 250px;
+    // column-gap: 30px;
     height:calc(100% - 70px);
     overflow: hidden;
     
@@ -85,29 +85,62 @@
       background: gray;
       border-radius: 5px;
     }
-
+    
     .middleside{
-      overflow: overlay;
+      overflow: scroll;
       font-family: 'Poppins';
       font-size: 18px;
-      background-color: skyblue;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      padding: 0 20px;
       .reading.word{
         margin:30px 0;
-        width:80%;
+        width:100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         .page{
-          border: solid 3px red;
-          height: 500px;
           margin: 20px 0;
-          .content{
-            
+          width:100%;
+          height: 690px;
+          display: flex;
+          justify-content: center;
+          .number{
+            font-size:30px;
+            margin: 0 20px 0 0;
           }
+          .content{
+            overflow: overlay;
+            font-size: 18px;
+            max-width:900px;
+            width: 100%;
+            height: 100%;
+            border: solid 3px red;
+            color:black;
+            background-color:white;
+            padding: 5px 10px 5px 5px;
+          }
+          .content::-webkit-scrollbar{
+            width:5px;
+          }
+          .content::-webkit-scrollbar-thumb{
+            height: 10%;
+            background: gray;
+            border-radius: 5px;
+          }
+        }
+        .tmpPage.words{
+          border:solid 3px red;
+          font-size: 18px;
+          width:900px;
+          height:690px;
+          padding: 5px 10px 5px 5px;
         }
       }
       .reading.book{
         width:100%;
-        height:500px;
+        height:690px;
+        
         .buttons{
           display: flex;
           justify-content: center;
@@ -115,24 +148,73 @@
           margin: 20px 0;
           button{
             margin:0 10px;
+            width:50px;
+            height:30px;
           }
         }
         .pages{
+          margin: auto;
           display: flex;
-          justify-content: space-between;
+          justify-content: center;
+          width:100%;
           height:100%;
-          .left-page{
-            border:solid 3px red;
-            width:47%;
+          .container{
+            margin:0 15px;
+            width:100%;
             height:100%;
+            .number{
+              font-size:30px;
+              margin: 0 15px 0 0;
+            }
+            .left-page{
+              font-size: 18px;
+              color:black;
+              border:solid 3px red;
+              overflow: overlay;
+              padding: 5px 10px 5px 5px;
+              background-color:white;
+              max-width:500px;
+              width:100%;
+              height: 690px;
+            }
+            .right-page{
+              font-size: 18px;
+              color:black;
+              border:solid 3px red;
+              overflow: overlay;
+              padding: 5px 10px 5px 5px;
+              background-color:white;
+              max-width:500px;
+              width:100%;
+              height: 690px;
+            }
+            .page::-webkit-scrollbar{
+              width:5px;
+            }
+            .page::-webkit-scrollbar-thumb{
+              height: 10%;
+              background: gray;
+              border-radius: 5px;
+            }
           }
-          .right-page{
-            border:solid 3px red;
-            width:47%;
-            height:100%;
+          .container.left{
+            display: flex;
+            justify-content:flex-end;
+          }
+          .container.right{
+            display: flex;
+            justify-content:flex-start;
           }
         }
+        .tmpPage.books{
+          border:solid 3px red;
+          font-size: 18px;
+          width:500px;
+          height:690px;
+          padding: 5px 10px 5px 5px;
+        }
       }
+      
     }
     .middleside::-webkit-scrollbar{
       width:12px;
@@ -145,8 +227,9 @@
 
     .rightside{
       overflow: overlay;
-      background-color: green;
+      background-color: beige;
       padding: 20px 20px;
+      font-size: 36px;
       .reading-style{
         margin: 20px 0;
         .explanation{

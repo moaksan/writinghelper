@@ -4,7 +4,7 @@ export default function RenderPageList({storage, state}){
   if(!storage || !state) return
   if(!state.currentFolderId || !state.currentFileId) return
   
-  const arr= [...Array(storage[state.currentFolderId][state.currentFileId].content.length).keys()]
+  const arr= [0]
 
   return (
     <div className="pageList">

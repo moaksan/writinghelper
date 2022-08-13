@@ -58,7 +58,6 @@ export default function RenderFolders({storage, setStorage, state, setState}){
               selectedFolderFileId:key,
               currentFileId:key,
               currentFolderId: now,
-              currentFilePageNum:storage[now][key].content.length,
               currentFilePage: state.currentFileId===key ? state.currentFilePage : 1
             })
           }}
