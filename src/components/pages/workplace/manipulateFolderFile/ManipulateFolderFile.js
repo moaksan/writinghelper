@@ -42,7 +42,7 @@ export default function ManipulateFolderFile({state, setState, storage, setStora
 
   async function addFolderFileButtonSubmit(e, type){
     e.preventDefault()
-
+    
     const addblank=document.querySelector(`.list .addBlank`)
     const name=addblank.querySelector('input').value.trim()
     const targetId=addblank.parentElement.id.slice(6)
@@ -79,7 +79,7 @@ export default function ManipulateFolderFile({state, setState, storage, setStora
         id: newId,
         type: 'file',
         name: name,
-        content: ['']
+        content: ''
       }
       setState({
         ...state,

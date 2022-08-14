@@ -1,4 +1,4 @@
-import { updateUserData } from 'components/firebase'
+import { setUserData } from 'components/firebase'
 import { useState } from 'react'
 import request from 'components/api'
 
@@ -7,19 +7,16 @@ export default function Utility({state, setState, storage, setStorage}){
   const [similarWordsResponse, setSimilarWordsResponse]= useState([])
   
   async function save(){
-    if(state.currentFolderId==null || state.currentFileId==null) return
     
     const target= document.querySelector('.writing textarea')
-    console.log(target)
-    let content=target.value
     let newStorage={...storage}
-    newStorage[state.currentFolderId][state.currentFileId].content=content
+    
     await setStorage(newStorage)
     const cache= await caches.open('writinghelper')
     cache.put('/data', new Response(await JSON.stringify({storage:newStorage})))
     
     if(state.isLogin){
-      await updateUserData(state.userInfo.email, state.currentFolderId, state.currentFileId, content)
+      await setUserData(state.userInfo.email, newStorage)
     }
 
     alert('저장되었습니다.')

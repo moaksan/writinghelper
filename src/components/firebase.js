@@ -59,7 +59,7 @@ export const addUser= (email)=>{
             id:'2',
             type:'file',
             name:'빈 파일',
-            content:['']
+            content:''
           }
         },
         info:{
@@ -100,7 +100,7 @@ export const addFolderFileUserData= async (email, targetId, newId, name, ids, ty
         id: newId,
         type: 'file',
         name: name,
-        content: ['']
+        content: ''
       }
     })
   }
@@ -170,5 +170,9 @@ export const updateUserData= async (email, folderId, fileId, content)=>{
   await updateDoc(doc(database, "users", email), {
     [key]: content
   })
+}
+
+export const setUserData= async (email, newStorage)=>{
+  await setDoc(doc(database, "users", email), newStorage)
 }
 
