@@ -44,6 +44,7 @@
 }
 
 .workplace .section .leftside .manipulateFolderFile .buttons .img {
+  cursor: pointer;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -54,6 +55,25 @@
 
 .workplace .section .leftside .manipulateFolderFile .buttons .img img {
   width: 30px;
+}
+
+.workplace .section .leftside .manipulateFolderFile .hoverName {
+  position: absolute;
+  background-color: #fff7e7;
+  height: 20px;
+  font-size: 13px;
+  padding: 3px 3px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: sans-serif;
+  pointer-events: none;
 }
 
 .workplace .section .leftside .list {

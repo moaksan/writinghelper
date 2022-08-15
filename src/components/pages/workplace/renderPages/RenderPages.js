@@ -24,7 +24,6 @@ export default function RenderPages({storage, setStorage, state, setState}){
 
   useEffect(()=>{
     if(renderable){
-      console.log('yes')
       elRefs.current.style.height= '0px'
       elRefs.current.style.height= Math.max(elRefs.current.scrollHeight + 6, 900) + 'px'
     }

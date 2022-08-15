@@ -8,7 +8,7 @@ export default function RenderFolders({storage, setStorage, state, setState}){
   const el=[]
   const elwrap=[]
   elwrap['0']=<div key={'0'} id={'elwrap0'} className='folder-wrap total-wrap'>{[]}</div>
-
+  
   while(arr.length!==0){
     const now=arr.pop()
     for(const key in storage[now]){
@@ -20,7 +20,7 @@ export default function RenderFolders({storage, setStorage, state, setState}){
         <div key={key} id={'el'+key} className='folder'>
           <div className={key===state.selectedFolderFileId ? 'folder-name selected' : 'folder-name'}
           onClick={(e)=>{
-            console.log('onclick')
+            console.log('onclick', storage[now][key].isOpen)
             setStorage({
               ...storage,
               [now]:{
@@ -69,6 +69,7 @@ export default function RenderFolders({storage, setStorage, state, setState}){
       }
     }
   }
+
   return(
     <div className='list'>
       {elwrap[0]}

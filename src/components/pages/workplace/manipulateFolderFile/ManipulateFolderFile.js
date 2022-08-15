@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 import { addFolderFileUserData, deleteUserData, renameUserData } from 'components/firebase'
+import {useState, useRef} from 'react'
 
 export default function ManipulateFolderFile({state, setState, storage, setStorage}){
 
-  async function addFolderFileButtonClick(type){
-
+  async function addFolderFileButtonClick(e, type){
     let target
     if(state.selectedFolderFileId===null){
       target=document.querySelector(`.list #elwrap0`)
@@ -15,7 +15,7 @@ export default function ManipulateFolderFile({state, setState, storage, setStora
         target=document.querySelector(`.list #el${state.selectedFolderFileId ? state.selectedFolderFileId : '0'}`).parentElement
       }
     }
-    
+
     if(target.id==='elwrap0'){
       
     } else{
@@ -61,7 +61,7 @@ export default function ManipulateFolderFile({state, setState, storage, setStora
         break
       }
     }
-
+    
     if(type==='folder'){
       newStorage[targetId][newId]={
         id: newId,
@@ -206,14 +206,38 @@ export default function ManipulateFolderFile({state, setState, storage, setStora
     
   }
 
+  async function mouseMove(e){
+    setState({
+      ...state,
+      coords:[e.clientX, e.clientY]
+    })
+  }
+
+  async function manipulateMouseMove(e){
+    setName(e.currentTarget.dataset.name)
+    hoverName.current.style.left=Math.max(state.coords[0]-hoverName.current.offsetWidth-2,0)+'px'
+    hoverName.current.style.top=Math.max(state.coords[1]-hoverName.current.offsetHeight-2,0)+'px'
+  }
+
+  async function manipulateMouseOut(e){
+    setIsHovering(false)
+  }
+  async function manipulateMouseOver(e){
+    setIsHovering(true)
+  }
+  const [isHovering, setIsHovering]= useState(false)
+  const [name, setName]= useState()
+  const hoverName= useRef()
+
   return (
     <div className='manipulateFolderFile'>
-      <div className='buttons'>
-        <div className='img' onClick={()=>addFolderFileButtonClick('file')}><img src={require('assets/note_add_FILL0_wght400_GRAD0_opsz48.svg').default} alt='로고'></img></div>
-        <div className='img' onClick={()=>addFolderFileButtonClick('folder')}><img src={require('assets/create_new_folder_FILL0_wght400_GRAD0_opsz48.svg').default} alt='로고'></img></div>
-        <div className='img' onClick={deleteFolderFileButtonClick}><img src={require('assets/delete_FILL0_wght400_GRAD0_opsz48.svg').default} alt='로고'></img></div>
-        <div className='img' onClick={renameFolderFileButtonClick}><img src={require('assets/pencil.svg').default} alt='로고'></img></div>
+      <div className='buttons' onMouseMove={mouseMove}>
+        <div className='img' onClick={(e)=>addFolderFileButtonClick(e, 'file')} onMouseMove={manipulateMouseMove} onMouseOut={manipulateMouseOut} onMouseOver={manipulateMouseOver} data-name='파일 생성'><img src={require('assets/note_add_FILL0_wght400_GRAD0_opsz48.svg').default} alt='로고'></img></div>
+        <div className='img' onClick={(e)=>addFolderFileButtonClick(e, 'folder')} onMouseMove={manipulateMouseMove} onMouseOut={manipulateMouseOut} onMouseOver={manipulateMouseOver} data-name='폴더 생성'><img src={require('assets/create_new_folder_FILL0_wght400_GRAD0_opsz48.svg').default} alt='로고'></img></div>
+        <div className='img' onClick={deleteFolderFileButtonClick} onMouseMove={manipulateMouseMove} onMouseOver={manipulateMouseOver} onMouseOut={manipulateMouseOut} data-name='삭제'><img src={require('assets/delete_FILL0_wght400_GRAD0_opsz48.svg').default} alt='로고'></img></div>
+        <div className='img' onClick={renameFolderFileButtonClick} onMouseMove={manipulateMouseMove} onMouseOut={manipulateMouseOut} onMouseOver={manipulateMouseOver} data-name='이름 바꾸기'><img src={require('assets/pencil.svg').default} alt='로고'></img></div>
       </div>
+      <div className='hoverName' ref={hoverName} style={{display: isHovering ? 'block' : 'none'}}>{name}</div>
     </div>
   )
 }

@@ -21,13 +21,14 @@ const initialState={
   selectedFolderFileId:null,
   currentFilePageNum:0,
   currentFilePage:1,
-  readingStyle:'word'
+  readingStyle:'word',
+  coords: [0,0]
 }
 
 function App() {
   const [state, setState]= useState(initialState)
   const [storage, setStorage]= useState()
-
+  
   useEffect(()=>{
     async function fetchUserInfo(){
       await initializeUserInfo({state, setState})

@@ -7,8 +7,6 @@ export default function Utility({state, setState, storage, setStorage}){
   const [similarWordsResponse, setSimilarWordsResponse]= useState([])
   
   async function save(){
-    
-    const target= document.querySelector('.writing textarea')
     let newStorage={...storage}
     
     await setStorage(newStorage)

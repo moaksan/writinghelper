@@ -26,12 +26,25 @@
           align-items: center;
           width:220px;
           .img {
+            cursor: pointer;
             display: flex;
             align-items: center;
             img {
               width:30px;
             }
           }
+        }
+        .hoverName{
+          position:absolute;
+          background-color: rgb(255, 247, 231);
+          height:20px;
+          font-size:13px;
+          padding: 3px 3px;
+          display:flex;
+          justify-content: center;
+          align-items: center;
+          font-family:sans-serif;
+          pointer-events: none;
         }
       }
 

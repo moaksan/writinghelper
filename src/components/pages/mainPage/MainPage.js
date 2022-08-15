@@ -10,6 +10,7 @@ export default function MainPage({state, setState}){
   return (
     <div className="mainPage">
       <Header state={state} setState={setState}></Header>
+      <div className='content'>메인화면</div>
     </div>
   )
 }
