@@ -5,8 +5,9 @@ let rows=45, cols=70
 
 export default function RenderPages({storage, setStorage, state, setState}){
   const elRefs= useRef()
-  const renderable= storage && state.currentFileId && state.currentFolderId
+  const renderable= state.currentFileId && state.currentFolderId && storage[state.currentFolderId][state.currentFileId]
   
+
   async function onChange(e){
     console.log('onChange')
     setStorage({

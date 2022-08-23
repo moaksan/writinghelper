@@ -39,7 +39,7 @@ export default function Login({state, setState, storage, setStorage}){
         'password':password
       })))
       await cache.put('data', new Response(await JSON.stringify(await readUserData(email))))
-
+      console.log((await(await cache.match('data')).json()).storage)
       setStorage((await(await cache.match('data')).json()).storage)
 
       navigate('/', {replace: true})

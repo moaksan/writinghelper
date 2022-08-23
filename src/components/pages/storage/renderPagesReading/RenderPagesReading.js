@@ -8,6 +8,10 @@ export default function RenderPagesReading({state, setState, storage, setStorage
   const wordRef=useRef([])
   const [content, setContent]= useState([])
   let newContent= []
+  
+  useEffect(()=>{
+    console.log('holymoly')
+  }, [])
 
   useEffect(()=>{
     if(renderable){

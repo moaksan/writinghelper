@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/writinghelper/static/css/main.bd8b740c.css",
-    "main.js": "/writinghelper/static/js/main.79c0f444.js",
+    "main.css": "/writinghelper/static/css/main.c5872115.css",
+    "main.js": "/writinghelper/static/js/main.3fe98d59.js",
     "static/js/787.28cb0dcd.chunk.js": "/writinghelper/static/js/787.28cb0dcd.chunk.js",
     "static/media/NanumPenScript-Regular.ttf": "/writinghelper/static/media/NanumPenScript-Regular.124b3244c7b453983cb5.ttf",
     "static/media/Poppins-Light.ttf": "/writinghelper/static/media/Poppins-Light.7641a0f76ca9ef6c252c.ttf",
@@ -17,12 +17,12 @@
     "static/media/edit_FILL0_wght400_GRAD0_opsz48.svg": "/writinghelper/static/media/edit_FILL0_wght400_GRAD0_opsz48.001c891bb22da95d5b26bfb408f4622f.svg",
     "static/media/navigate_next_FILL0_wght400_GRAD0_opsz48.svg": "/writinghelper/static/media/navigate_next_FILL0_wght400_GRAD0_opsz48.9d980f7239270f683b4a10d2cb48aeb8.svg",
     "static/media/expand_more_FILL0_wght400_GRAD0_opsz48.svg": "/writinghelper/static/media/expand_more_FILL0_wght400_GRAD0_opsz48.7dd0cb697b666a745cd512948cbbb0b9.svg",
-    "main.bd8b740c.css.map": "/writinghelper/static/css/main.bd8b740c.css.map",
-    "main.79c0f444.js.map": "/writinghelper/static/js/main.79c0f444.js.map",
+    "main.c5872115.css.map": "/writinghelper/static/css/main.c5872115.css.map",
+    "main.3fe98d59.js.map": "/writinghelper/static/js/main.3fe98d59.js.map",
     "787.28cb0dcd.chunk.js.map": "/writinghelper/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.bd8b740c.css",
-    "static/js/main.79c0f444.js"
+    "static/css/main.c5872115.css",
+    "static/js/main.3fe98d59.js"
   ]
 }

@@ -173,6 +173,6 @@ export const updateUserData= async (email, folderId, fileId, content)=>{
 }
 
 export const setUserData= async (email, newStorage)=>{
-  await setDoc(doc(database, "users", email), newStorage)
+  await setDoc(doc(database, "users", email), {'storage':newStorage})
 }
 

@@ -99,6 +99,7 @@ export default function ManipulateFolderFile({state, setState, storage, setStora
   }
 
   async function deleteFolderFileButtonClick(){
+    
     if(state.selectedFolderFileId===null) return
     
     let newStorage={...storage}
