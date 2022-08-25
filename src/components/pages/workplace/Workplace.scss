@@ -197,3 +197,24 @@
     }
   }
 }
+
+@media only screen and (max-width: 1150px) {
+  .workplace{
+    .section{
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      .leftside {
+        display: none;
+      }
+      .middleside{
+        width:100%;
+        padding: 40px;
+        
+      }
+      .rightside{
+        display: none;
+      }
+    }
+  }
+}

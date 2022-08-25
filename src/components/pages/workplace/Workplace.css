@@ -269,4 +269,26 @@
   background: gray;
   border-radius: 5px;
 }
+
+@media only screen and (max-width: 1150px) {
+  .workplace .section {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    width: 100%;
+  }
+  .workplace .section .leftside {
+    display: none;
+  }
+  .workplace .section .middleside {
+    width: 100%;
+    padding: 40px;
+  }
+  .workplace .section .rightside {
+    display: none;
+  }
+}
 /*# sourceMappingURL=Workplace.css.map */
